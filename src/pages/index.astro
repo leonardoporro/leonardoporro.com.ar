@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString("es-AR", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+---
+<Base title="Software Architect · .NET" description="Leonardo Porro, arquitecto de software en Rosario. Construyo NSail, un stack .NET open source, con un equipo de personas y agentes. Acá cuento cómo." lang="es" page="home">
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Rosario, Argentina</p>
+      <h1>Leonardo Porro</h1>
+      <p class="lead">Arquitecto de software, 25 años en .NET. Modernizo sistemas viejos y construyo las bases sobre las que los equipos entregan. Hoy construyo <a href="https://www.nsail.ar">NSail</a>, un stack .NET open source, con un equipo de personas y agentes de IA — y lo cuento en el blog.</p>
+      <div class="links">
+        <a class="pill" href="/blog/">Blog</a>
+        <a class="pill" href="/cv/">CV</a>
+        <a class="pill" href="https://github.com/leonardoporro" rel="me">GitHub</a>
+        <a class="pill" href="https://www.linkedin.com/in/leonardoporro" rel="me">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>Últimas entradas</h2>
+      <ul class="post-list" style="margin-top: var(--space-5)">
+        {posts.map((p) => (
+          <li>
+            <p class="post-meta">{fmt(p.data.date)}{p.data.series && ` · ${p.data.series}`}</p>
+            <h3><a href={`/blog/${p.id}/`}>{p.data.title}</a></h3>
+            <p class="muted">{p.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

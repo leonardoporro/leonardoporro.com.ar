@@ -1,0 +1,28 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString("es-AR", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+---
+<Base title="Blog" description="Notas sobre arquitectura .NET, menos código, y cómo se construye NSail con agentes." lang="es" page="blog">
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Blog</p>
+      <h1>Construyendo NSail, y otras notas</h1>
+      <p class="lead">Arquitectura .NET, escribir menos código, y el día a día de un stack construido por personas y agentes. <a href="/rss.xml">RSS</a>.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <ul class="post-list">
+        {posts.map((p) => (
+          <li>
+            <p class="post-meta">{fmt(p.data.date)}{p.data.series && ` · ${p.data.series}`}{p.data.lang === "en" && " · English"}</p>
+            <h3><a href={`/blog/${p.id}/`}>{p.data.title}</a></h3>
+            <p class="muted">{p.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

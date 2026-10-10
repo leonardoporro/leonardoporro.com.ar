@@ -1,0 +1,133 @@
+{
+  "name": "Leonardo Porro",
+  "headline": "Software Architect & Technical Lead · .NET",
+  "tagline": "Building scalable systems that stay simple. Helping teams grow through clarity and code.",
+  "contact": [
+    { "text": "Rosario, Argentina (remote, UTC−3)" },
+    { "text": "mail@leonardoporro.com.ar", "href": "mailto:mail@leonardoporro.com.ar" },
+    { "text": "+54 9 341 597 4793" },
+    { "text": "linkedin.com/in/leonardoporro", "href": "https://www.linkedin.com/in/leonardoporro" },
+    { "text": "github.com/leonardoporro", "href": "https://github.com/leonardoporro" },
+    { "text": "nsail.ar", "href": "https://www.nsail.ar" }
+  ],
+  "summary": "Software architect with 25+ years in .NET, the last 15 as senior developer, technical lead, principal or architect on platforms of up to 100 microservices and 50 engineers. Modernizes legacy systems (WinForms, Informix, .NET Framework) into Blazor, SQL Server and .NET Core, and builds the shared foundations teams ship on: infrastructure libraries, messaging, Roslyn source generators. Author of Detached.Mapper (144 GitHub stars) and founder of NSail, an open-source .NET application stack delivered by a crew of people and AI agents.",
+  "skills": [
+    { "group": "Languages & platforms", "items": "C#, .NET 10 / .NET Core / .NET Framework, ASP.NET Core, Blazor (Server, WASM, United), Roslyn source generators, TypeScript, Angular, Vue.js, WPF / WinForms / UWP / Xamarin" },
+    { "group": "Architecture", "items": "Modular monoliths, microservices, CQRS, event-driven messaging (NServiceBus, mediator), REST, GraphQL, minimal APIs, multi-tenancy, authorization, dependency injection" },
+    { "group": "Data", "items": "Entity Framework Core, SQL Server, MongoDB, Azure Cosmos DB, Informix-to-SQL Server migrations, profiling" },
+    { "group": "Cloud & delivery", "items": "Azure (Service Fabric, AKS, Service Bus, DevOps), AWS (SNS, SQS, S3), Docker, CI/CD, E2E testing" },
+    { "group": "Leadership", "items": "Tech lead of teams of 3–16, mentoring and training, architecture reviews, migration planning, AI-agent pipelines" }
+  ],
+  "experience": [
+    {
+      "role": "Freelance Software Developer & Architect", "org": "Independent", "when": "May 2026 – present",
+      "bullets": [
+        "Independent architecture and .NET development; building NSail with a crew of people and AI agents (see Projects)."
+      ]
+    },
+    {
+      "role": "Software Architect, Technical Lead", "org": "Forte Group", "when": "Mar 2025 – May 2026",
+      "meta": "Remote · client: a ready-mix concrete company",
+      "bullets": [
+        "Led the migration of hundreds of WinForms + Informix micro-applications to Blazor United and SQL Server, working across the whole stack from UX to DevOps.",
+        "Consolidated the applications on one shared platform, improving performance and scalability and cutting operating costs."
+      ]
+    },
+    {
+      "role": "Senior Software Developer, Platform Growth Team Lead", "org": "Qu POS", "when": "Jun 2023 – Jul 2024",
+      "meta": "Remote · restaurant-management suite for large chains, ~50 engineers across teams",
+      "bullets": [
+        "Built a new inter-service communication system that raised the reliability and performance of the platform's microservices.",
+        "Reduced internal tool development time by ~30% with a low-code administration tool.",
+        "Mentored the team on CQRS and microservice patterns."
+      ]
+    },
+    {
+      "role": "Senior Software Developer", "org": "Zartis, for Cubic Telecom", "when": "Nov 2021 – Jun 2023",
+      "meta": "Remote · Subscription Management Platform connecting cars to mobile network operators · team of 5, SAFe",
+      "bullets": [
+        "Developed and optimized services in an ecosystem of ~100 .NET Core microservices serving 14M+ connected vehicles: Service Fabric on Azure, NServiceBus over Azure Service Bus, Cosmos DB for configuration and saga state, Azure DevOps.",
+        "Delivered two migrations from .NET Framework to .NET Core, improving performance and maintainability."
+      ]
+    },
+    {
+      "role": "Principal Developer (Architect)", "org": "Qu POS", "when": "Dec 2018 – Nov 2021",
+      "meta": "Remote · .NET micro and mid services, Vue.js and UWP clients on AWS (SQS, SNS, S3)",
+      "bullets": [
+        "Created **Extensions**, the shared library set behind every microservice — data, file and queue access, REST and graph clients, authorization — adopted across ~50 engineers.",
+        "Designed, bootstrapped and handed off the Auth, Web Ordering, Reporting and CRM services.",
+        "Led the migration from .NET Framework to .NET Core 2.0 through 6; designed durable HTTP-over-queue messaging on SNS/SQS.",
+        "Tuned a 2 TB MongoDB ingesting 800,000+ documents a week, significantly cutting response times; fixed several complex memory leaks; built a dynamic integration-testing platform."
+      ]
+    },
+    {
+      "role": "Senior Software Developer, Technical Referent", "org": "Grupo San Cristóbal", "when": "Jan 2018 – Dec 2018",
+      "meta": "Insurance · Digital Transformation program run with McKinsey · team of 14",
+      "bullets": [
+        "Prepared the Azure and .NET Core platform for the program and wrote the shared libraries that unified the microservices' base code.",
+        "Technical referent on the claims-tracking site that follows a car from the customer's claim to its repair: Angular and .NET Core in Docker on Azure Kubernetes, Cosmos DB and a legacy SQL Server."
+      ]
+    },
+    {
+      "role": "Senior Software Developer, Team Lead", "org": "AAJ Technologies", "when": "Feb 2016 – Jan 2018",
+      "bullets": ["Led the team that built the pricing system for Memorial Healthcare System; ran a weekly Lunch & Learn on advanced C#."]
+    }
+  ],
+  "earlier": [
+    {
+      "role": "Technical Lead", "org": "Spark Radius / Intava", "when": "Apr 2014 – Feb 2016",
+      "bullets": ["Led the team of 3 that built the in-store kiosk for LG (Xamarin with native Android views on low-end touch TVs); worked on the Staples Omni Kiosk (WPF, SQL Server); built a UWP meeting app for General Mills."]
+    },
+    {
+      "role": "Senior Software Developer, Technical Lead", "org": "Velocity Partners (now Endava)", "when": "Apr 2011 – Apr 2014",
+      "bullets": [
+        "Technical lead on an 18-month UI rewrite for Wolfson Microelectronics (now Cirrus Logic): a WPF-style binding and command architecture that also runs on Mono; led the team of 5 behind **WISC-E**, an audio-chip tuning tool.",
+        "Refactored the WPF sound-card applet (Dell, Razer and Sony skins); worked on the PeopleMatter HR suite and GoldMine CRM."
+      ]
+    },
+    {
+      "role": "Semi-senior Software Developer", "org": "Neoris", "when": "Aug 2009 – Apr 2011",
+      "bullets": ["Built parts of the commodity-management systems of El Tejar and Louis Dreyfus Commodities — teams of 18–36, ~800 use cases, 2,000 tables — in WPF, WCF and ASP.NET with offline database synchronization."]
+    },
+    {
+      "role": "Software Developer", "org": "Geoagro", "when": "Jul 2004 – Aug 2009",
+      "bullets": ["Developed precision-farming GIS desktop software (soil and dosage maps exported to spraying machines, TatukGIS and ESRI components), a Pocket PC app for plague surveys and a GUI for SVN that versioned thousands of farming data files."]
+    },
+    {
+      "role": "Junior Software Developer", "org": "Sauan & Asoc", "when": "Jul 2003 – Jul 2004",
+      "bullets": ["Ran a 20-seat office infrastructure and built a web site that unified a Progress 4GL application with a SQL database."]
+    }
+  ],
+  "projects": [
+    {
+      "role": "NSail", "org": "founder & architect · nsail.ar", "when": "2026 – present",
+      "meta": "Open-source .NET application stack and the business applications built on it",
+      "bullets": [
+        "Designed a modular monolith on .NET 10 in three layers: a domain-free **Stack** (data, messaging, telemetry, UI), reusable domain **Kits** (accounting, scheduling, tickets, identity, medical…) and the **Apps** assembled from them: an optical-shop system and a therapy-practice system.",
+        "Published the Stack as versioned NuGet packages under MIT: Blazor, EF Core, mediator messaging and Roslyn generators that produce endpoints, mappers and DI registrations from plain message classes.",
+        "Run delivery with people and AI agents: issue-driven queue, self-hosted CI, 8,000+ automated tests, an E2E test per happy path."
+      ]
+    },
+    {
+      "role": "Detached.Mapper", "org": "author · github.com/leonardoporro/Detached-Mapper", "when": "2016 – present",
+      "bullets": [
+        "ORM-friendly mapper for EF Core that saves whole entity graphs in one call — **144 GitHub stars**. Companions: **Detached.PatchTypes** (dirty-tracking proxies for JSON \"undefined\") and **Detached.RuntimeTypes** (runtime CLR types)."
+      ]
+    }
+  ],
+  "education": [
+    { "title": "Systems Engineering", "when": "2012 – 2017", "meta": "Universidad Abierta Interamericana · in progress · GPA 8.8/10" },
+    { "title": "Computer Science", "when": "2003 – 2005", "meta": "Universidad Nacional de Rosario · not completed" }
+  ],
+  "certifications": [
+    "Microsoft Certified Professional (MCPS), 2012",
+    "MCTS: .NET Framework 4, Windows Applications, 2012",
+    "Certified ScrumMaster, Scrum Alliance, 2013",
+    "Spanish (native) · English (professional working proficiency)"
+  ],
+  "quotes": [
+    { "text": "One of the best software developers I have ever met… a mentor, leader and instructor for others on the team.", "cite": "Vicki Mitchell, former VP at Google and Arm (client, 2011)" },
+    { "text": "Without his contribution and architectural skills the project wouldn't have been what it is.", "cite": "Ian Brockbank, Senior Staff Engineer, Cirrus Logic (2014)" },
+    { "text": "Front end, back end or QA… knowledge that surprises without losing sight of the business. One of those people you want on your team at any cost.", "cite": "Manuel Di Nucci, Enterprise Architect, his manager at Grupo San Cristóbal (2018; translated)" }
+  ]
+}

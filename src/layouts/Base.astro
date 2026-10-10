@@ -1,0 +1,73 @@
+---
+// The one layout: head metadata, fonts, header and footer. The CV page hides header and footer in print.
+import "@fontsource-variable/source-sans-3";
+import "@fontsource-variable/source-serif-4";
+import "../styles/global.css";
+
+interface Props { title: string; description: string; lang?: "es" | "en"; page?: "home" | "cv" | "blog"; ogType?: "website" | "article" }
+const { title, description, lang = "es", page = "home", ogType = "website" } = Astro.props;
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "";
+const path = Astro.url.pathname;
+const nav = [
+  { href: "/", key: "home", label: lang === "es" ? "Inicio" : "Home" },
+  { href: "/blog/", key: "blog", label: "Blog" },
+  { href: "/cv/", key: "cv", label: "CV" },
+];
+---
+<!doctype html>
+<html lang={lang === "es" ? "es-AR" : "en"}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · Leonardo Porro</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={site + path} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="Leonardo Porro" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={site + path} />
+  <meta property="og:locale" content={lang === "es" ? "es_AR" : "en_US"} />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate" type="application/rss+xml" title="Leonardo Porro — blog" href="/rss.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <script is:inline>
+    // Apply a saved theme before first paint; the page is complete without it.
+    try { const s = localStorage.getItem("theme"); if (s === "light" || s === "dark") document.documentElement.dataset.theme = s; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="header print-hide">
+    <div class="container">
+      <a class="brand" href="/">Leonardo Porro</a>
+      <nav class="nav" aria-label="Main">
+        {nav.map((n) => <a href={n.href} aria-current={n.key === page ? "page" : undefined}>{n.label}</a>)}
+        <button class="theme" type="button" aria-label={lang === "es" ? "Cambiar tema" : "Toggle theme"} data-theme-toggle>◐</button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer class="footer print-hide">
+    <div class="container">
+      <span>© {new Date().getFullYear()} Leonardo Porro · Rosario, Argentina</span>
+      <span>
+        <a href="https://github.com/leonardoporro" rel="me">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/leonardoporro" rel="me">LinkedIn</a> ·
+        <a href="https://www.nsail.ar">NSail</a> ·
+        <a href="/rss.xml">RSS</a>
+      </span>
+    </div>
+  </footer>
+  <script is:inline>
+    document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
+      const root = document.documentElement;
+      const dark = root.dataset.theme === "dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+      root.dataset.theme = dark ? "light" : "dark";
+      try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    });
+  </script>
+</body>
+</html>

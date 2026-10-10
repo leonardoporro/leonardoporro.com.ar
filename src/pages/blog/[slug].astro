@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) => d.toLocaleDateString(post.data.lang === "es" ? "es-AR" : "en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+---
+<Base title={post.data.title} description={post.data.description} lang={post.data.lang} page="blog" ogType="article">
+  <article class="section">
+    <div class="container">
+      <p class="post-meta">{fmt(post.data.date)}{post.data.series && ` · ${post.data.series}`}</p>
+      <h1>{post.data.title}</h1>
+      <p class="lead" style="margin-top: var(--space-4)">{post.data.description}</p>
+      <div class="prose" style="margin-top: var(--space-6)">
+        <Content />
+        {post.data.canonical && <p class="muted">{post.data.lang === "es" ? "Publicado originalmente en" : "Originally published on"} <a href={post.data.canonical}>LinkedIn</a>.</p>}
+      </div>
+    </div>
+  </article>
+</Base>

@@ -1,0 +1,146 @@
+---
+// The CV: one JSON, rendered as a web page and printed to PDF by scripts/pdf.mjs after the build.
+import Base from "../layouts/Base.astro";
+import cv from "../data/cv.json";
+
+// **bold** in the JSON is the only markup bullets carry.
+const md = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+---
+<Base title="CV" description={cv.headline + " — " + cv.tagline} lang="en" page="cv">
+<article class="cv">
+  <p class="print-hide download"><a class="pill" href="/cv/Leonardo-Porro-CV.pdf">Download as PDF</a></p>
+
+  <header class="cv-head">
+    <h1 class="name">{cv.name}</h1>
+    <p class="headline">{cv.headline}</p>
+    <p class="tagline">{cv.tagline}</p>
+    <div class="contact">
+      {cv.contact.map((c) => c.href ? <a href={c.href}>{c.text}</a> : <span>{c.text}</span>)}
+    </div>
+  </header>
+
+  <h2>Summary</h2>
+  <p class="summary">{cv.summary}</p>
+
+  <h2>Core skills</h2>
+  <dl class="skills">
+    {cv.skills.map((s) => <><dt>{s.group}</dt><dd>{s.items}</dd></>)}
+  </dl>
+
+  <h2>Experience</h2>
+  {cv.experience.map((j) => (
+    <div class="job">
+      <div class="job-head"><span class="role">{j.role}<span class="org">{j.org}</span></span><span class="when">{j.when}</span></div>
+      {j.meta && <p class="meta">{j.meta}</p>}
+      <ul>{j.bullets.map((b) => <li set:html={md(b)} />)}</ul>
+    </div>
+  ))}
+
+  <div class="earlier">
+    <h2>Earlier experience</h2>
+    {cv.earlier.map((j) => (
+      <div class="job">
+        <div class="job-head"><span class="role">{j.role}<span class="org">{j.org}</span></span><span class="when">{j.when}</span></div>
+        <ul class="compact">{j.bullets.map((b) => <li set:html={md(b)} />)}</ul>
+      </div>
+    ))}
+  </div>
+
+  <h2>Projects &amp; open source</h2>
+  {cv.projects.map((j) => (
+    <div class="job">
+      <div class="job-head"><span class="role">{j.role}<span class="org">{j.org}</span></span><span class="when">{j.when}</span></div>
+      {j.meta && <p class="meta">{j.meta}</p>}
+      <ul class="compact">{j.bullets.map((b) => <li set:html={md(b)} />)}</ul>
+    </div>
+  ))}
+
+  <div class="cols">
+    <div>
+      <h2>Education</h2>
+      {cv.education.map((e) => (
+        <div class="job">
+          <div class="job-head"><span class="role">{e.title}</span><span class="when">{e.when}</span></div>
+          <p class="meta">{e.meta}</p>
+        </div>
+      ))}
+    </div>
+    <div>
+      <h2>Certifications &amp; languages</h2>
+      <ul class="compact">{cv.certifications.map((c) => <li>{c}</li>)}</ul>
+    </div>
+  </div>
+
+  <h2>What colleagues and clients say</h2>
+  <div class="quotes">
+    {cv.quotes.map((q) => <div class="quote"><p>"{q.text}"</p><cite>{q.cite}</cite></div>)}
+  </div>
+</article>
+</Base>
+
+<style>
+  /* Screen: a sheet on the paper background. Print: the sheet is the page. Sizes are in pt so the
+     PDF matches what the screen shows. */
+  .cv {
+    --ink: var(--text); --faint: var(--muted); --rule: var(--line);
+    font-size: 9.4pt; line-height: 1.27; color: var(--ink);
+    background: var(--surface); max-width: 8.5in; margin: var(--space-6) auto; padding: .45in .55in .5in;
+    border: 1px solid var(--line);
+  }
+  .download { margin: 0 0 var(--space-4); }
+  .cv a { color: inherit; text-decoration: none; }
+  .cv-head { border-bottom: 2px solid var(--accent); padding-bottom: 7pt; margin-bottom: 9pt; }
+  .name { font-family: var(--font-display); font-size: 23pt; font-weight: 700; line-height: 1.05; margin: 0; letter-spacing: 0; }
+  .headline { font-size: 12pt; font-weight: 600; color: var(--link); margin: 3pt 0 1pt; }
+  .tagline { color: var(--muted); font-size: 10pt; margin: 0 0 5pt; }
+  .contact { display: flex; flex-wrap: wrap; gap: 3pt 14pt; color: var(--muted); font-size: 9.4pt; }
+  .cv h2 { font-family: var(--font-body); font-size: 8.9pt; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: var(--link); margin: 9pt 0 3.5pt; padding-bottom: 1.5pt; border-bottom: 1px solid var(--rule); break-after: avoid; }
+  .cv p { margin: 0 0 4pt; }
+  .summary { font-size: 10pt; }
+  .skills { display: grid; grid-template-columns: 9.2em 1fr; row-gap: 2pt; column-gap: 8pt; margin: 0; }
+  .skills dt { font-weight: 600; }
+  .skills dd { margin: 0; }
+  .job { margin: 0 0 5.5pt; break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; break-after: avoid; }
+  .role { font-weight: 700; font-size: 10.6pt; }
+  .org { font-weight: 400; }
+  .org::before { content: " · "; color: var(--faint); }
+  .when { color: var(--muted); font-size: 9.3pt; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .meta { color: var(--muted); font-size: 9.3pt; margin: 0 0 2pt; break-after: avoid; }
+  .cv ul { margin: 1.5pt 0 0; padding-left: 11pt; }
+  .cv li { margin: 0 0 1.6pt; padding-left: 1pt; break-inside: avoid; }
+  .cv li::marker { color: var(--accent); }
+  .compact li { margin-bottom: 1pt; }
+  .earlier .job { margin-bottom: 4.5pt; }
+  .earlier .role { font-size: 10.1pt; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 22pt; break-inside: avoid; }
+  .cols h2 { margin-top: 7pt; }
+  .cols .role { font-size: 9.8pt; }
+  .cols .meta { font-size: 8.8pt; }
+  .quotes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8pt; }
+  .quote { background: var(--soft); border-left: 2.5px solid var(--accent); padding: 4pt 6pt 4pt 7pt; font-size: 8.9pt; line-height: 1.28; break-inside: avoid; }
+  .quote p { margin: 0 0 3pt; }
+  .quote cite { font-style: normal; color: var(--muted); font-size: 8.7pt; display: block; }
+
+  @media (max-width: 700px) {
+    .cv { padding: var(--space-4); margin: var(--space-4) auto; font-size: 10.5pt; }
+    .skills { grid-template-columns: 1fr; row-gap: 0; }
+    .skills dd { margin-bottom: 4pt; }
+    .job-head { flex-wrap: wrap; }
+    .cols, .cols3, .quotes { grid-template-columns: 1fr; }
+  }
+  /* Print: the page is the sheet. These live here, not in the global block, because Astro's scoped
+     selectors would otherwise outrank them. */
+  @media print {
+    .cv { max-width: none; margin: 0; padding: 0; border: 0; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+
+<style is:global>
+  @page { size: Letter; margin: .45in .55in .45in .55in; }
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --text: #1c2430; --muted: #5b6676; --line: #d9dee5; --link: #0067b3; --soft: #e9f4fd; }
+    html, body { background: #fff !important; }
+    .print-hide { display: none !important; }
+  }
+</style>
