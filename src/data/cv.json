@@ -7,8 +7,7 @@
     { "text": "mail@leonardoporro.com.ar", "href": "mailto:mail@leonardoporro.com.ar" },
     { "text": "+54 9 341 597 4793" },
     { "text": "linkedin.com/in/leonardoporro", "href": "https://www.linkedin.com/in/leonardoporro" },
-    { "text": "github.com/leonardoporro", "href": "https://github.com/leonardoporro" },
-    { "text": "nsail.ar", "href": "https://www.nsail.ar" }
+    { "text": "github.com/leonardoporro", "href": "https://github.com/leonardoporro" }
   ],
   "summary": "Software architect with 25+ years in .NET, the last 15 as senior developer, technical lead, principal or architect on platforms of up to 100 microservices and 50 engineers. Modernizes legacy systems (WinForms, Informix, .NET Framework) into Blazor, SQL Server and .NET Core, and builds the shared foundations teams ship on: infrastructure libraries, messaging, Roslyn source generators. Author of Detached.Mapper (144 GitHub stars) and founder of NSail, an open-source .NET application stack delivered by a crew of people and AI agents.",
   "skills": [
