@@ -32,7 +32,7 @@ const md = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
     <div class="job">
       <div class="job-head"><span class="role">{j.role}<span class="org">{j.org}</span></span><span class="when">{j.when}</span></div>
       {j.meta && <p class="meta">{j.meta}</p>}
-      <ul>{j.bullets.map((b) => <li set:html={md(b)} />)}</ul>
+      {j.bullets.length > 0 && <ul>{j.bullets.map((b) => <li set:html={md(b)} />)}</ul>}
     </div>
   ))}
 

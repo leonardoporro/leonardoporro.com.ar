@@ -19,10 +19,9 @@
   ],
   "experience": [
     {
-      "role": "Freelance Software Developer & Architect", "org": "Independent", "when": "May 2026 – present",
-      "bullets": [
-        "Independent architecture and .NET development; building NSail with a crew of people and AI agents (see Projects)."
-      ]
+      "role": "Senior Software Developer (.NET / React)", "org": "Jobsity, for Switcher", "when": "Jun 2026 – present",
+      "meta": "Remote · .NET and React",
+      "bullets": []
     },
     {
       "role": "Software Architect, Technical Lead", "org": "Forte Group", "when": "Mar 2025 – May 2026",
